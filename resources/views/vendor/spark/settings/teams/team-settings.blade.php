@@ -16,7 +16,7 @@
             <div class="col-md-3 spark-settings-tabs">
                 <aside>
                     <h3 class="nav-heading ">
-                        {{__('teams.team_settings')}}
+                        Team {{ $team->name }}
                     </h3>
                     <ul class="nav flex-column mb-4 ">
                         @if (Auth::user()->ownsTeam($team))
@@ -32,6 +32,15 @@
                             </li>
                         @endif
 
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#projects" aria-controls="projects" role="tab" data-toggle="tab">
+                                    <svg class="icon-20 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg ">
+                                        <path d="M16.8792928,9.09695343 C18.6654343,9.4976045 20,11.09295 20,13 C20,15.209139 18.209139,17 16,17 L5,17 C2.23857625,17 0,14.7614237 0,12 C0,9.58046798 1.71857515,7.56233069 4.00162508,7.09968852 C4.00054449,7.06659179 4,7.03335948 4,7 C4,5.34314575 5.34314575,4 7,4 C7.55384606,4 8.07263826,4.1500834 8.51792503,4.41179863 C9.4182103,3.53797709 10.6462795,3 12,3 C14.7614237,3 17,5.23857625 17,8 C17,8.37684164 16.9583108,8.74394625 16.8792928,9.09695343 Z" id="Combined-Shape"></path>
+                                    </svg>
+                                    Projects
+                                </a>
+                            </li>
+
                         <li class="nav-item ">
                             <a class="nav-link" href="#membership" aria-controls="membership" role="tab" data-toggle="tab">
                                 <svg class="icon-20 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg ">
@@ -43,7 +52,7 @@
 
                             @if (Spark::createsAdditionalTeams())
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="/settings#/{{Spark::teamsPrefix()}}">
+                                    <a class="nav-link" href="/settings#/{{str_plural(Spark::teamsPrefix())}}">
                                         <svg class="icon-20 " viewBox="0 0 20 20 " xmlns="http://www.w3.org/2000/svg ">
                                             <path d="M6 8C4 8 2 6.2 2 4s2-4 4-4c2.3 0 4 1.8 4 4S8.4 8 6 8zm0 1c2.3 0 4.3.4 6.2 1l-1 6H9.8l-1 4H3l-.6-4H1l-1-6c2-.6
               4-1 6-1zm8.4.2c1.3 0 2.6.4 3.8 1l-1 5.8H16l-1 4h-4l.4-2h1.3l1.6-8.8zM12 0c2.3 0 4 1.8 4 4s-1.7 4-4 4c-.4 0-.8
@@ -116,6 +125,17 @@
                             @include('spark::settings.teams.team-profile')
                         </div>
                     @endif
+
+                    <!-- Projects -->
+                    @if (Auth::user()->ownsTeam($team))
+                        <div role="tabcard" class="tab-pane" id="projects">
+                    @else
+                        <div role="tabcard" class="tab-pane active" id="projects">
+                    @endif
+                            <div v-if="team">
+                                @include('projects')
+                            </div>
+                        </div>
 
                     <!-- Membership -->
                     @if (Auth::user()->ownsTeam($team))
