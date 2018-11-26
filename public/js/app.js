@@ -68145,8 +68145,10 @@ module.exports = function(module) {
  */
 
 __webpack_require__("./spark/resources/assets/js/spark-bootstrap.js");
-
 __webpack_require__("./resources/js/components/bootstrap.js");
+__webpack_require__("./resources/js/components/projects.js");
+__webpack_require__("./resources/js/components/create-project.js");
+__webpack_require__("./resources/js/components/team-projects.js");
 
 var app = new Vue({
   mixins: [__webpack_require__("./spark/resources/assets/js/spark.js")]
@@ -68174,6 +68176,150 @@ __webpack_require__("./resources/js/components/home.js");
 
 /***/ }),
 
+/***/ "./resources/js/components/create-project.js":
+/***/ (function(module, exports) {
+
+Vue.component('create-project', {
+    props: ['user', 'team'],
+    /**
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            plans: [],
+
+            form: new SparkForm({
+                name: '',
+                platform: '',
+                slug: '',
+                team_id: ''
+            })
+        };
+    },
+
+
+    computed: {
+        /**
+         * Get the active subscription instance.
+         */
+        activeSubscription: function activeSubscription() {
+            if (!this.$parent.billable) {
+                return;
+            }
+
+            var subscription = _.find(this.$parent.billable.subscriptions, function (subscription) {
+                return subscription.name == 'default';
+            });
+
+            if (typeof subscription !== 'undefined') {
+                return subscription;
+            }
+        },
+
+
+        /**
+         * Get the active plan instance.
+         */
+        activePlan: function activePlan() {
+            var _this = this;
+
+            if (this.activeSubscription) {
+                return _.find(this.plans, function (plan) {
+                    return plan.id == _this.activeSubscription.provider_plan;
+                });
+            }
+        },
+
+
+        /**
+         * Check if there's a limit for the number of teams.
+         */
+        hasTeamLimit: function hasTeamLimit() {
+            if (!this.activePlan) {
+                return false;
+            }
+
+            return !!this.activePlan.attributes.teams;
+        },
+
+
+        /**
+         *
+         * Get the remaining teams in the active plan.
+         */
+        remainingTeams: function remainingTeams() {
+            var ownedTeams = _.filter(this.$parent.teams, { owner_id: this.$parent.billable.id });
+
+            return this.activePlan ? this.activePlan.attributes.teams - ownedTeams.length : 0;
+        },
+
+
+        /**
+         * Check if the user can create more teams.
+         */
+        canCreateMoreTeams: function canCreateMoreTeams() {
+            if (!this.hasTeamLimit) {
+                return true;
+            }
+
+            return this.remainingTeams > 0;
+        }
+    },
+
+    /**
+     * The component has been created by Vue.
+     */
+    created: function created() {
+        this.getPlans();
+    },
+
+
+    watch: {
+        /**
+         * Watch the team name for changes.
+         */
+        'form.name': function formName(val, oldVal) {
+            if (this.form.slug == '' || this.form.slug == oldVal.toLowerCase().replace(/[\s\W-]+/g, '-')) {
+                this.form.slug = val.toLowerCase().replace(/[\s\W-]+/g, '-');
+            }
+        }
+    },
+
+    methods: {
+        /**
+         * Create a new project.
+         */
+        create: function create() {
+            var _this2 = this;
+
+            this.form.team_id = this.team.id;
+            Spark.post('/settings/' + Spark.teamsPrefix + '/projects', this.form).then(function () {
+                _this2.form.name = '';
+                _this2.form.platform = '';
+                _this2.form.team_id = '';
+                _this2.form.slug = '';
+
+                Bus.$emit('updateUser');
+                Bus.$emit('updateProjects');
+            });
+        },
+
+
+        /**
+         * Get all the plans defined in the application.
+         */
+        getPlans: function getPlans() {
+            var _this3 = this;
+
+            axios.get('/spark/plans').then(function (response) {
+                _this3.plans = response.data;
+            });
+        }
+    }
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/home.js":
 /***/ (function(module, exports) {
 
@@ -68182,6 +68328,121 @@ Vue.component('home', {
 
     mounted: function mounted() {
         //
+    }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/projects.js":
+/***/ (function(module, exports) {
+
+Vue.component('projects', {
+    props: ['user', 'team'],
+
+    /**
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            projects: []
+        };
+    },
+
+
+    /**
+     * The component has been created by Vue.
+     */
+    created: function created() {
+        var self = this;
+        this.getProjects();
+
+        Bus.$on('updateProjects', function () {
+            self.getProjects();
+        });
+    },
+
+
+    methods: {
+        /**
+         * Get the team being managed.
+         */
+        getProjects: function getProjects() {
+            var _this = this;
+
+            axios.get('/settings/' + Spark.teamsPrefix + '/json/' + this.team.id + '/projects').then(function (response) {
+                _this.projects = response.data;
+            });
+        }
+    }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/team-projects.js":
+/***/ (function(module, exports) {
+
+Vue.component('team-projects', {
+    props: ['user', 'team'],
+
+    /**
+     * The component's data.
+     */
+    data: function data() {
+        return {
+            projects: [],
+            deletingProject: null,
+            deleteProjectForm: new SparkForm({})
+        };
+    },
+
+
+    /**
+     * The component has been created by Vue.
+     */
+    created: function created() {
+        var self = this;
+        this.getProjects();
+
+        Bus.$on('updateProjects', function () {
+            self.getProjects();
+        });
+    },
+
+
+    methods: {
+        /**
+         * Get the team being managed.
+         */
+        getProjects: function getProjects() {
+            var _this = this;
+
+            axios.get('/settings/' + Spark.teamsPrefix + '/json/' + this.team.id + '/projects').then(function (response) {
+                _this.projects = response.data;
+            });
+        },
+
+
+        /**
+         * Approve the deletion of the given team.
+         */
+        approveProjectDelete: function approveProjectDelete(project) {
+            this.deletingProject = project;
+
+            $('#modal-delete-project').modal('show');
+        },
+
+
+        /**
+         * Delete the given team.
+         */
+        deleteProject: function deleteProject() {
+            Spark.delete('/settings/' + Spark.teamsPrefix + '/' + this.deletingProject.team_id + '/projects/' + this.deletingProject.id, this.deleteProjectForm).then(function () {
+                Bus.$emit('updateUser');
+                Bus.$emit('updateProjects');
+
+                $('#modal-delete-project').modal('hide');
+            });
+        }
     }
 });
 

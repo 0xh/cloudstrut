@@ -15,8 +15,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth.real');
         $this->middleware('verified');
-
-        // $this->middleware('subscribed');
+        $this->middleware('subscribed');
     }
 
     /**

@@ -62,8 +62,8 @@ class SparkServiceProvider extends ServiceProvider
 
         Spark::chargeTeamsPerMember();
 
-        Spark::teamPlan('Basic', 'provider-id-1')
-            ->price(10)
+        Spark::teamPlan('Regular', 'plan_E2WBVQB6E8YMna')
+            ->price(7)
             ->features([
                 'First', 'Second', 'Third'
             ]);
