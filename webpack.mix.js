@@ -15,6 +15,7 @@ let path = require('path');
 
 mix
     .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/design.scss', 'public/css')
     .js('resources/js/app.js', 'public/js')
     .react('resources/js/react-app.js', 'public/js')
     .sass('resources/sass/app-rtl.scss', 'public/css')

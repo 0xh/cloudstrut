@@ -1,0 +1,18 @@
+@import "~storm-react-diagrams/src/sass/main";
+
+.srd-diagram {
+  height: 100vh !important;
+  background-color: #3c3c3c !important;
+
+  background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
+
+  background-size: 50px 50px;
+}
+
+.resource-palette {
+  padding-right: 0;
+}
+
+.resource-diagram {
+  padding-left: 0;
+}
