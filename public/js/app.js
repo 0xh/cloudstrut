@@ -68197,7 +68197,6 @@ Vue.component('create-project', {
         };
     },
 
-
     computed: {
         /**
          * Get the active subscription instance.
@@ -68216,7 +68215,6 @@ Vue.component('create-project', {
             }
         },
 
-
         /**
          * Get the active plan instance.
          */
@@ -68230,7 +68228,6 @@ Vue.component('create-project', {
             }
         },
 
-
         /**
          * Check if there's a limit for the number of teams.
          */
@@ -68242,7 +68239,6 @@ Vue.component('create-project', {
             return !!this.activePlan.attributes.teams;
         },
 
-
         /**
          *
          * Get the remaining teams in the active plan.
@@ -68252,7 +68248,6 @@ Vue.component('create-project', {
 
             return this.activePlan ? this.activePlan.attributes.teams - ownedTeams.length : 0;
         },
-
 
         /**
          * Check if the user can create more teams.
@@ -68272,7 +68267,6 @@ Vue.component('create-project', {
     created: function created() {
         this.getPlans();
     },
-
 
     watch: {
         /**
@@ -68303,7 +68297,6 @@ Vue.component('create-project', {
                 Bus.$emit('updateProjects');
             });
         },
-
 
         /**
          * Get all the plans defined in the application.
@@ -68348,7 +68341,6 @@ Vue.component('projects', {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -68360,7 +68352,6 @@ Vue.component('projects', {
             self.getProjects();
         });
     },
-
 
     methods: {
         /**
@@ -68395,7 +68386,6 @@ Vue.component('team-projects', {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -68407,7 +68397,6 @@ Vue.component('team-projects', {
             self.getProjects();
         });
     },
-
 
     methods: {
         /**
@@ -68421,7 +68410,6 @@ Vue.component('team-projects', {
             });
         },
 
-
         /**
          * Approve the deletion of the given team.
          */
@@ -68430,7 +68418,6 @@ Vue.component('team-projects', {
 
             $('#modal-delete-project').modal('show');
         },
-
 
         /**
          * Delete the given team.
@@ -69124,7 +69111,6 @@ module.exports = {
         };
     },
 
-
     watch: {
         /**
          * Watch the team name for changes.
@@ -69157,14 +69143,12 @@ module.exports = {
         }
     },
 
-
     /**
      * Prepare the component.
      */
     mounted: function mounted() {
         this.configureBraintree();
     },
-
 
     methods: {
         configureBraintree: function configureBraintree() {
@@ -69182,7 +69166,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the coupon specified in the query string.
          */
@@ -69195,7 +69178,6 @@ module.exports = {
                 _this2.invalidCoupon = true;
             });
         },
-
 
         /**
          * Attempt to register with the application.
@@ -69276,7 +69258,6 @@ module.exports = {
         };
     },
 
-
     watch: {
         /**
          * Watch for changes on the entire billing address.
@@ -69340,7 +69321,6 @@ module.exports = {
         }
     },
 
-
     methods: {
         /**
          * Attempt to guess the user's country.
@@ -69357,7 +69337,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the coupon specified in the query string.
          */
@@ -69370,7 +69349,6 @@ module.exports = {
                 _this3.invalidCoupon = true;
             });
         },
-
 
         /**
          * Attempt to register with the application.
@@ -69413,7 +69391,6 @@ module.exports = {
             });
         },
 
-
         /*
          * After obtaining the Stripe token, send the registration to Spark.
          */
@@ -69432,7 +69409,6 @@ module.exports = {
             return this.collectsVat(this.registerForm.country);
         },
 
-
         /**
          * Get the displayable discount for the coupon.
          */
@@ -69445,7 +69421,6 @@ module.exports = {
                 }
             }
         },
-
 
         /**
          * Get the current billing address from the register form.
@@ -69558,7 +69533,13 @@ $.extend(Spark, __webpack_require__("./spark/resources/assets/js/forms/http.js")
 /***/ "./spark/resources/assets/js/forms/errors.js":
 /***/ (function(module, exports) {
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+    return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+} : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+};
 
 /**
  * Spark form error collection class.
@@ -69695,14 +69676,12 @@ module.exports = {
         return Spark.sendForm('post', uri, form);
     },
 
-
     /**
      * Helper method for making PUT HTTP requests.
      */
     put: function put(uri, form) {
         return Spark.sendForm('put', uri, form);
     },
-
 
     /**
      * Helper method for making PATCH HTTP requests.
@@ -69711,14 +69690,12 @@ module.exports = {
         return Spark.sendForm('patch', uri, form);
     },
 
-
     /**
      * Helper method for making DELETE HTTP requests.
      */
     delete: function _delete(uri, form) {
         return Spark.sendForm('delete', uri, form);
     },
-
 
     /**
      * Send the form to the back-end server.
@@ -69772,7 +69749,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -69788,7 +69764,6 @@ module.exports = {
         });
     },
 
-
     methods: {
         /**
          * Set the user receiving teh discount.
@@ -69798,7 +69773,6 @@ module.exports = {
 
             this.getCurrentDiscountForUser(user);
         },
-
 
         /**
          * Apply the discount to the user.
@@ -69841,7 +69815,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -69855,7 +69828,6 @@ module.exports = {
         });
     },
 
-
     methods: {
         /**
          * Get all of the announcements.
@@ -69867,7 +69839,6 @@ module.exports = {
                 _this.announcements = response.data;
             });
         },
-
 
         /**
          * Create a new announcement.
@@ -69881,7 +69852,6 @@ module.exports = {
                 _this2.getAnnouncements();
             });
         },
-
 
         /**
          * Edit the given announcement.
@@ -69897,7 +69867,6 @@ module.exports = {
             $('#modal-update-announcement').modal('show');
         },
 
-
         /**
          * Update the specified announcement.
          */
@@ -69911,7 +69880,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Show the approval dialog for deleting an announcement.
          */
@@ -69920,7 +69888,6 @@ module.exports = {
 
             $('#modal-delete-announcement').modal('show');
         },
-
 
         /**
          * Delete the specified announcement.
@@ -69956,7 +69923,6 @@ module.exports = {
     mounted: function mounted() {
         this.usePushStateForTabs('.spark-settings-tabs');
     },
-
 
     /**
      * The component has been created by Vue.
@@ -70000,7 +69966,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -70017,7 +69982,6 @@ module.exports = {
         });
     },
 
-
     methods: {
         /**
          * Get the revenue information for the application.
@@ -70032,7 +69996,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the subscriber information for the application.
          */
@@ -70044,7 +70007,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the number of users that are on a generic trial.
          */
@@ -70055,7 +70017,6 @@ module.exports = {
                 _this3.genericTrialUsers = parseInt(response.data);
             });
         },
-
 
         /**
          * Get the performance indicators for the application.
@@ -70074,7 +70035,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Draw the performance indicator charts.
          */
@@ -70085,7 +70045,6 @@ module.exports = {
             this.drawNewUsersChart();
         },
 
-
         /**
          * Draw the monthly recurring revenue chart.
          */
@@ -70094,7 +70053,6 @@ module.exports = {
                 return indicator.monthly_recurring_revenue;
             });
         },
-
 
         /**
          * Draw the yearly recurring revenue chart.
@@ -70105,7 +70063,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Draw the daily volume chart.
          */
@@ -70114,7 +70071,6 @@ module.exports = {
                 return indicator.daily_volume;
             });
         },
-
 
         /**
          * Draw the daily new users chart.
@@ -70125,7 +70081,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Draw a chart with currency formatting on the Y-Axis.
          */
@@ -70134,7 +70089,6 @@ module.exports = {
                 return Vue.filter('currency')(value.value);
             });
         },
-
 
         /**
          * Draw a chart with the given parameters.
@@ -70168,7 +70122,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Calculate the percent change between two numbers.
          */
@@ -70191,7 +70144,6 @@ module.exports = {
             return this.percentChange(_.takeRight(this.indicators).monthly_recurring_revenue, this.lastMonthsIndicators.monthly_recurring_revenue);
         },
 
-
         /**
          * Calculate the yearly change in monthly recurring revenue.
          */
@@ -70202,7 +70154,6 @@ module.exports = {
 
             return this.percentChange(_.takeRight(this.indicators).monthly_recurring_revenue, this.lastYearsIndicators.monthly_recurring_revenue);
         },
-
 
         /**
          * Calculate the monthly change in yearly recurring revenue.
@@ -70215,7 +70166,6 @@ module.exports = {
             return this.percentChange(_.takeRight(this.indicators).yearly_recurring_revenue, this.lastMonthsIndicators.yearly_recurring_revenue);
         },
 
-
         /**
          * Calculate the yearly change in yearly recurring revenue.
          */
@@ -70227,7 +70177,6 @@ module.exports = {
             return this.percentChange(_.takeRight(this.indicators).yearly_recurring_revenue, this.lastYearsIndicators.yearly_recurring_revenue);
         },
 
-
         /**
          * Get the total number of users trialing.
          */
@@ -70237,7 +70186,6 @@ module.exports = {
             }, 0);
         },
 
-
         /**
          * Get the available, formatted chart dates for the current indicators.
          */
@@ -70246,7 +70194,6 @@ module.exports = {
                 return moment(indicator.created_at).format('M/D');
             });
         },
-
 
         /**
          * Get the base chart data set.
@@ -70284,7 +70231,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -70296,7 +70242,6 @@ module.exports = {
         });
     },
 
-
     /**
      * Prepare the component.
      */
@@ -70307,7 +70252,6 @@ module.exports = {
             return _this.showSearch();
         });
     },
-
 
     methods: {
         /**
@@ -70326,7 +70270,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Impersonate the given user.
          */
@@ -70334,14 +70277,12 @@ module.exports = {
             window.location = '/spark/kiosk/users/impersonate/' + user.id;
         },
 
-
         /**
          * Show the discount modal for the given user.
          */
         addDiscount: function addDiscount(user) {
             Bus.$emit('addDiscount', user);
         },
-
 
         /**
          * Get the plan the user is actively subscribed to.
@@ -70356,7 +70297,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Get the active, valid subscription for the user.
          */
@@ -70369,7 +70309,6 @@ module.exports = {
 
             return subscription;
         },
-
 
         /**
          * Get the active subscription instance.
@@ -70388,7 +70327,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Get the customer URL on the billing provider's website.
          */
@@ -70405,7 +70343,6 @@ module.exports = {
                 return 'https://' + domain + 'braintreegateway.com/merchants/' + Spark.braintreeMerchantId + '/customers/' + billable.braintree_id;
             }
         },
-
 
         /**
          * Show the search results and hide the user profile.
@@ -70445,7 +70382,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -70473,7 +70409,6 @@ module.exports = {
         });
     },
 
-
     methods: {
         /**
          * Get all of the available subscription plans.
@@ -70485,7 +70420,6 @@ module.exports = {
                 _this.plans = response.data;
             });
         },
-
 
         /**
          * Perform a search for the given query.
@@ -70504,7 +70438,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Show the search results and update the browser history.
          */
@@ -70513,7 +70446,6 @@ module.exports = {
 
             this.showSearch();
         },
-
 
         /**
          * Show the search results.
@@ -70526,7 +70458,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Show the user profile for the given user.
          */
@@ -70535,7 +70466,6 @@ module.exports = {
 
             this.loadProfile(user);
         },
-
 
         /**
          * Load the user profile for the given user.
@@ -70566,14 +70496,12 @@ module.exports = {
             }
         },
 
-
         /**
          * Determine if the current billable entity is a user.
          */
         billingUser: function billingUser() {
             return this.billableType && this.billableType == 'user';
         },
-
 
         /**
          * Access the global Spark object.
@@ -70625,7 +70553,6 @@ module.exports = {
             });
         }),
 
-
         /**
          * Reset the Braintree container.
          */
@@ -70659,7 +70586,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Get the current discount for the user.
          */
@@ -70678,7 +70604,6 @@ module.exports = {
                 _this.loadingCurrentDiscount = false;
             });
         },
-
 
         /**
          * Get the current discount for the team.
@@ -70699,7 +70624,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the formatted discount amount for the given discount.
          */
@@ -70714,7 +70638,6 @@ module.exports = {
                 return Vue.filter('currency')(this.calculateAmountOff(discount.amount_off));
             }
         },
-
 
         /**
          * Calculate the amount off for the given discount amount.
@@ -70746,7 +70669,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Switch to showing monthly plans.
@@ -70757,7 +70679,6 @@ module.exports = {
             this.showingYearlyPlans = false;
         },
 
-
         /**
          * Switch to showing yearly plans.
          */
@@ -70766,7 +70687,6 @@ module.exports = {
 
             this.showingYearlyPlans = true;
         },
-
 
         /**
          * Show the plan details for the given plan.
@@ -70786,7 +70706,6 @@ module.exports = {
             return this.showingMonthlyPlans ? 'monthly' : 'yearly';
         },
 
-
         /**
          * Get all of the plans for the active interval.
          */
@@ -70798,7 +70717,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get all of the paid plans.
          */
@@ -70807,7 +70725,6 @@ module.exports = {
                 return plan.active && plan.price > 0;
             });
         },
-
 
         /**
          * Get all of the paid plans for the active interval.
@@ -70818,14 +70735,12 @@ module.exports = {
             });
         },
 
-
         /**
          * Determine if both monthly and yearly plans are available.
          */
         hasMonthlyAndYearlyPlans: function hasMonthlyAndYearlyPlans() {
             return this.monthlyPlans.length > 0 && this.yearlyPlans.length > 0;
         },
-
 
         /**
          * Determine if both monthly and yearly plans are available.
@@ -70834,7 +70749,6 @@ module.exports = {
             return _.filter(this.paidPlans, { interval: 'monthly' }).length > 0 && _.filter(this.paidPlans, { interval: 'yearly' }).length > 0;
         },
 
-
         /**
          * Determine if only yearly plans are available.
          */
@@ -70842,14 +70756,12 @@ module.exports = {
             return this.monthlyPlans.length == 0 && this.yearlyPlans.length > 0;
         },
 
-
         /**
          * Determine if both monthly and yearly plans are available.
          */
         onlyHasYearlyPaidPlans: function onlyHasYearlyPaidPlans() {
             return _.filter(this.paidPlans, { interval: 'monthly' }).length == 0 && _.filter(this.paidPlans, { interval: 'yearly' }).length > 0;
         },
-
 
         /**
          * Get all of the monthly plans.
@@ -70859,7 +70771,6 @@ module.exports = {
                 return plan.active && plan.interval == 'monthly';
             });
         },
-
 
         /**
          * Get all of the yearly plans.
@@ -70891,7 +70802,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Get the active plans for the application.
@@ -70912,7 +70822,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the invitation specified in the query string.
          */
@@ -70925,7 +70834,6 @@ module.exports = {
                 _this2.invalidInvitation = true;
             });
         },
-
 
         /**
          * Select the appropriate default plan for registration.
@@ -70946,7 +70854,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Select the free plan.
          */
@@ -70959,7 +70866,6 @@ module.exports = {
                 this.selectPlan(plan);
             }
         },
-
 
         /**
          * Select the plan with the given id.
@@ -70976,7 +70882,6 @@ module.exports = {
             return this.selectedPlan;
         },
 
-
         /**
          * Select the plan with the given name.
          */
@@ -70992,14 +70897,12 @@ module.exports = {
             return this.selectedPlan;
         },
 
-
         /**
          * Determine if the given plan is selected.
          */
         isSelected: function isSelected(plan) {
             return this.selectedPlan && plan.id == this.selectedPlan.id;
         },
-
 
         /**
          * Select the given plan.
@@ -71009,7 +70912,6 @@ module.exports = {
 
             this.registerForm.plan = plan.id;
         },
-
 
         /**
          * Determine if we should show the yearly plans.
@@ -71034,7 +70936,6 @@ module.exports = {
             stripe: Spark.stripeKey ? Stripe(Spark.stripeKey) : null
         };
     },
-
 
     methods: {
         /**
@@ -71089,7 +70990,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Update the subscription to the given plan.
@@ -71120,7 +71020,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Determine if the given plan is selected.
          */
@@ -71143,14 +71042,12 @@ module.exports = {
             }
         },
 
-
         /**
          * Determine if the active plan is a monthly plan.
          */
         activePlanIsMonthly: function activePlanIsMonthly() {
             return this.activePlan && this.activePlan.interval == 'monthly';
         },
-
 
         /**
          * Get the active subscription instance.
@@ -71169,7 +71066,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Determine if the current subscription is active.
          */
@@ -71177,14 +71073,12 @@ module.exports = {
             return this.activeSubscription && !this.activeSubscription.ends_at;
         },
 
-
         /**
          * Determine if the billable entity is on a generic trial.
          */
         onGenericTrial: function onGenericTrial() {
             return this.billable.trial_ends_at && moment.utc(this.billable.trial_ends_at).isAfter(moment.utc());
         },
-
 
         /**
          * Determine if the current subscription is active.
@@ -71196,7 +71090,6 @@ module.exports = {
 
             return this.activeSubscription && this.activeSubscription.trial_ends_at && moment.utc().isBefore(moment.utc(this.activeSubscription.trial_ends_at));
         },
-
 
         /**
          * Get the formatted trial ending date.
@@ -71213,7 +71106,6 @@ module.exports = {
             return moment.utc(this.activeSubscription.trial_ends_at).local().format('MMMM Do, YYYY');
         },
 
-
         /**
          * Determine if the current subscription is active.
          */
@@ -71221,14 +71113,12 @@ module.exports = {
             return this.activeSubscription && this.activeSubscription.ends_at && moment.utc().isBefore(moment.utc(this.activeSubscription.ends_at));
         },
 
-
         /**
          * Determine if the billable entity has no active subscription.
          */
         needsSubscription: function needsSubscription() {
             return !this.activeSubscription || this.activeSubscription.ends_at && moment.utc().isAfter(moment.utc(this.activeSubscription.ends_at));
         },
-
 
         /**
          * Get the URL for the subscription plan update.
@@ -71269,7 +71159,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Register the click handler for all of the tabs.
          */
@@ -71284,7 +71173,6 @@ module.exports = {
                 self.broadcastTabChange($(this).attr('href').substring(1));
             });
         },
-
 
         /**
          * Activate the tab for the current hash in the URL.
@@ -71309,7 +71197,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Activate the first tab in a list.
          */
@@ -71323,14 +71210,12 @@ module.exports = {
             }
         },
 
-
         /**
          * Remove the active class from the tabs.
          */
         removeActiveClassFromTabs: function removeActiveClassFromTabs() {
             $(this.pushStateSelector + ' a').removeClass('active');
         },
-
 
         /**
          * Broadcast that a tab change happened.
@@ -71355,7 +71240,6 @@ module.exports = {
             return Spark.collectsEuropeanVat ? _.includes(['BE', 'BG', 'CZ', 'DK', 'DE', 'EE', 'IE', 'GR', 'ES', 'FR', 'HR', 'IT', 'CY', 'LV', 'LT', 'LU', 'HU', 'MT', 'NL', 'AT', 'PL', 'PT', 'RO', 'SI', 'SK', 'FI', 'SE', 'GB'], country) : false;
         },
 
-
         /**
          * Refresh the tax rate using the given form input.
          */
@@ -71367,14 +71251,12 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the tax amount for the selected plan.
          */
         taxAmount: function taxAmount(plan) {
             return plan.price * (this.taxRate / 100);
         },
-
 
         /**
          * Get the total plan price including the applicable tax.
@@ -71407,7 +71289,6 @@ module.exports = {
             Bus.$emit('showNotifications');
         },
 
-
         /**
          * Show the customer support e-mail form.
          */
@@ -71435,7 +71316,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Show the user notifications.
@@ -71444,7 +71324,6 @@ module.exports = {
             this.showingNotifications = true;
             this.showingAnnouncements = false;
         },
-
 
         /**
          * Show the product announcements.
@@ -71455,7 +71334,6 @@ module.exports = {
 
             this.updateLastReadAnnouncementsTimestamp();
         },
-
 
         /**
          * Update the last read announcements timestamp.
@@ -71483,14 +71361,12 @@ module.exports = {
             }
         },
 
-
         /**
          * Determine if the user has any notifications.
          */
         hasNotifications: function hasNotifications() {
             return this.notifications && this.notifications.notifications.length > 0;
         },
-
 
         /**
          * Determine if the user has any announcements.
@@ -71517,7 +71393,6 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
@@ -71525,7 +71400,6 @@ module.exports = {
         this.getTokens();
         this.getAvailableAbilities();
     },
-
 
     /**
      * The component has been created by Vue.
@@ -71538,7 +71412,6 @@ module.exports = {
         });
     },
 
-
     methods: {
         /**
          * Get the current API tokens for the user.
@@ -71550,7 +71423,6 @@ module.exports = {
                 return _this.tokens = response.data;
             });
         },
-
 
         /**
          * Get all of the available token abilities.
@@ -71588,7 +71460,6 @@ module.exports = {
         };
     },
 
-
     computed: {
         copyCommandSupported: function copyCommandSupported() {
             return document.queryCommandSupported('copy');
@@ -71618,7 +71489,6 @@ module.exports = {
             this.form.abilities = _.map(defaults, 'value');
         },
 
-
         /**
          * Enable all the available abilities for the given token.
          */
@@ -71628,7 +71498,6 @@ module.exports = {
             this.form.abilities = _.map(this.availableAbilities, 'value');
         },
 
-
         /**
          * Remove all of the abilities from the token.
          */
@@ -71637,7 +71506,6 @@ module.exports = {
 
             this.form.abilities = [];
         },
-
 
         /**
          * Toggle the given ability in the list of assigned abilities.
@@ -71652,14 +71520,12 @@ module.exports = {
             }
         },
 
-
         /**
          * Determine if the given ability has been assigned to the token.
          */
         abilityIsAssigned: function abilityIsAssigned(ability) {
             return _.includes(this.form.abilities, ability);
         },
-
 
         /**
          * Create a new API token.
@@ -71676,7 +71542,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Display the token to the user.
          */
@@ -71685,7 +71550,6 @@ module.exports = {
 
             $('#modal-show-token').modal('show');
         },
-
 
         /**
          * Select the token and copy to Clipboard.
@@ -71697,7 +71561,6 @@ module.exports = {
                 document.execCommand("copy");
             }
         },
-
 
         /**
          * Reset the token form back to its default state.
@@ -71737,7 +71600,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Show the edit token modal.
@@ -71750,7 +71612,6 @@ module.exports = {
             $('#modal-update-token').modal('show');
         },
 
-
         /**
          * Initialize the edit form with the given token.
          */
@@ -71759,7 +71620,6 @@ module.exports = {
 
             this.updateTokenForm.abilities = token.metadata.abilities;
         },
-
 
         /**
          * Update the token being edited.
@@ -71774,7 +71634,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Toggle the ability on the current token being edited.
          */
@@ -71788,14 +71647,12 @@ module.exports = {
             }
         },
 
-
         /**
          * Determine if the ability has been assigned to the token being edited.
          */
         abilityIsAssigned: function abilityIsAssigned(ability) {
             return _.includes(this.updateTokenForm.abilities, ability);
         },
-
 
         /**
          * Get user confirmation that the token should be deleted.
@@ -71805,7 +71662,6 @@ module.exports = {
 
             $('#modal-delete-token').modal('show');
         },
-
 
         /**
          * Delete the specified token.
@@ -71839,14 +71695,12 @@ module.exports = {
 		};
 	},
 
-
 	/**
   * Prepare the component.
   */
 	mounted: function mounted() {
 		this.getInvoices();
 	},
-
 
 	methods: {
 		/**
@@ -71910,14 +71764,12 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
     mounted: function mounted() {
         this.form.information = this.billable.extra_billing_information;
     },
-
 
     methods: {
         /**
@@ -71961,7 +71813,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -71975,14 +71826,12 @@ module.exports = {
         });
     },
 
-
     /**
      * Prepare the component.
      */
     mounted: function mounted() {
         this.getCurrentDiscountForBillable(this.billableType, this.billable);
     },
-
 
     methods: {
         /**
@@ -72017,7 +71866,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -72030,7 +71878,6 @@ module.exports = {
             return true;
         });
     },
-
 
     /**
      * Prepare the component.
@@ -72058,7 +71905,6 @@ module.exports = {
             })
         };
     },
-
 
     methods: {
         /**
@@ -72110,14 +71956,12 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
     mounted: function mounted() {
         this.braintree('braintree-payment-method-container', this.braintreeCallback);
     },
-
 
     methods: {
         /**
@@ -72133,7 +71977,6 @@ module.exports = {
                 _this.resetBraintree('braintree-payment-method-container', _this.braintreeCallback);
             });
         },
-
 
         /**
          * The Braintree payment method received callback.
@@ -72153,7 +71996,6 @@ module.exports = {
         urlForUpdate: function urlForUpdate() {
             return this.billingUser ? '/settings/payment-method' : '/settings/' + Spark.teamsPrefix + '/' + this.team.id + '/payment-method';
         },
-
 
         /**
          * Get the proper brand icon for the customer's credit card.
@@ -72219,7 +72061,6 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
@@ -72228,7 +72069,6 @@ module.exports = {
 
         this.initializeBillingAddress();
     },
-
 
     methods: {
         /**
@@ -72246,7 +72086,6 @@ module.exports = {
             this.form.zip = this.billable.billing_zip;
             this.form.country = this.billable.billing_country || 'US';
         },
-
 
         /**
          * Update the billable's card information.
@@ -72286,7 +72125,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Send the credit card update information to the server.
          */
@@ -72320,14 +72158,12 @@ module.exports = {
             return this.billingUser ? this.user.name : this.team.owner.name;
         },
 
-
         /**
          * Get the URL for the payment method update.
          */
         urlForUpdate: function urlForUpdate() {
             return this.billingUser ? '/settings/payment-method' : '/settings/' + Spark.teamsPrefix + '/' + this.team.id + '/payment-method';
         },
-
 
         /**
          * Get the proper brand icon for the customer's credit card.
@@ -72354,7 +72190,6 @@ module.exports = {
                     return 'fa-cc-stripe';
             }
         },
-
 
         /**
          * Get the placeholder for the billable entity's credit card.
@@ -72386,14 +72221,12 @@ module.exports = {
         };
     },
 
-
     /**
      * Bootstrap the component.
      */
     mounted: function mounted() {
         this.form.vat_id = this.billable.vat_id;
     },
-
 
     methods: {
         /**
@@ -72443,7 +72276,6 @@ module.exports = {
         };
     },
 
-
     /**
      * Bootstrap the component.
      */
@@ -72451,7 +72283,6 @@ module.exports = {
         this.form.name = this.user.name;
         this.form.email = this.user.email;
     },
-
 
     methods: {
         /**
@@ -72482,7 +72313,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Update the user's profile photo.
@@ -72509,7 +72339,6 @@ module.exports = {
                 self.form.setErrors(error.response.data.errors);
             });
         },
-
 
         /**
          * Gather the form data for the photo upload.
@@ -72550,7 +72379,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -72581,7 +72409,6 @@ module.exports = {
 			form: new SparkForm({})
 		};
 	},
-
 
 	methods: {
 		/**
@@ -72615,7 +72442,6 @@ module.exports = {
 		};
 	},
 
-
 	/**
   * Prepare the component.
   */
@@ -72623,7 +72449,6 @@ module.exports = {
 		this.form.country_code = this.user.country_code;
 		this.form.phone = this.user.phone;
 	},
-
 
 	methods: {
 		/**
@@ -72660,7 +72485,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Update the user's password.
@@ -72694,7 +72518,6 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
@@ -72725,7 +72548,6 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
@@ -72738,7 +72560,6 @@ module.exports = {
             self.showPlanDetails(plan);
         });
     },
-
 
     methods: {
         /**
@@ -72771,7 +72592,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Confirm the cancellation operation.
@@ -72779,7 +72599,6 @@ module.exports = {
         confirmCancellation: function confirmCancellation() {
             $('#modal-confirm-cancellation').modal('show');
         },
-
 
         /**
          * Cancel the current subscription.
@@ -72826,7 +72645,6 @@ module.exports = {
         }
     },
 
-
     methods: {
         /**
          * Show the plan details for the given plan.
@@ -72836,7 +72654,6 @@ module.exports = {
         showPlanDetails: function showPlanDetails(plan) {
             this.$parent.$emit('showPlanDetails', plan);
         },
-
 
         /**
          * Get the plan price with the applicable VAT.
@@ -72875,7 +72692,6 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
@@ -72900,7 +72716,6 @@ module.exports = {
         });
     },
 
-
     methods: {
         /**
          * Mark the given plan as selected.
@@ -72910,7 +72725,6 @@ module.exports = {
 
             this.form.plan = this.selectedPlan.id;
         },
-
 
         /**
          * Subscribe to the specified plan.
@@ -72922,7 +72736,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Show the plan details for the given plan.
          *
@@ -72931,7 +72744,6 @@ module.exports = {
         showPlanDetails: function showPlanDetails(plan) {
             this.$parent.$emit('showPlanDetails', plan);
         },
-
 
         /**
          * Determine if the user/team has a payment method defined.
@@ -72993,7 +72805,6 @@ module.exports = {
         };
     },
 
-
     watch: {
         /**
          * Watch for changes on the entire billing address.
@@ -73020,7 +72831,6 @@ module.exports = {
         }
     },
 
-
     methods: {
         /**
          * Initialize the billing address form for the billable entity.
@@ -73035,7 +72845,6 @@ module.exports = {
             this.form.vat_id = this.billable.vat_id;
         },
 
-
         /**
          * Mark the given plan as selected.
          */
@@ -73044,7 +72853,6 @@ module.exports = {
 
             this.form.plan = this.selectedPlan.id;
         },
-
 
         /**
          * Subscribe to the specified plan.
@@ -73087,7 +72895,6 @@ module.exports = {
             });
         },
 
-
         /*
          * After obtaining the Stripe token, create subscription on the Spark server.
          */
@@ -73100,14 +72907,12 @@ module.exports = {
             });
         },
 
-
         /**
          * Determine if the user has subscribed to the given plan before.
          */
         hasSubscribed: function hasSubscribed(plan) {
             return !!_.filter(this.billable.subscriptions, { provider_plan: plan.id }).length;
         },
-
 
         /**
          * Show the plan details for the given plan.
@@ -73117,7 +72922,6 @@ module.exports = {
         showPlanDetails: function showPlanDetails(plan) {
             this.$parent.$emit('showPlanDetails', plan);
         },
-
 
         /**
          * Determine if the user/team has a payment method defined.
@@ -73135,7 +72939,6 @@ module.exports = {
             return this.billingUser ? this.user.name : this.team.owner.name;
         },
 
-
         /**
          * Determine if the selected country collects European VAT.
          */
@@ -73143,14 +72946,12 @@ module.exports = {
             return this.collectsVat(this.form.country);
         },
 
-
         /**
          * Get the URL for subscribing to a plan.
          */
         urlForNewSubscription: function urlForNewSubscription() {
             return this.billingUser ? '/settings/subscription' : '/settings/' + Spark.teamsPrefix + '/' + this.team.id + '/subscription';
         },
-
 
         /**
          * Get the current billing address from the subscribe form.
@@ -73185,7 +72986,6 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
@@ -73206,7 +73006,6 @@ module.exports = {
         }
     },
 
-
     methods: {
         /**
          * Confirm the plan update with the user.
@@ -73217,7 +73016,6 @@ module.exports = {
             $('#modal-confirm-plan-update').modal('show');
         },
 
-
         /**
          * Approve the plan update.
          */
@@ -73226,7 +73024,6 @@ module.exports = {
 
             this.updateSubscription(this.confirmingPlan);
         },
-
 
         /**
          * Select the active plan interval.
@@ -73239,7 +73036,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Show the plan details for the given plan.
          *
@@ -73248,7 +73044,6 @@ module.exports = {
         showPlanDetails: function showPlanDetails(plan) {
             this.$parent.$emit('showPlanDetails', plan);
         },
-
 
         /**
          * Get the plan price with the applicable VAT.
@@ -73288,7 +73083,6 @@ module.exports = {
         };
     },
 
-
     computed: {
         /**
          * Get the active subscription instance.
@@ -73307,7 +73101,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Get the active plan instance.
          */
@@ -73321,7 +73114,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Check if there's a limit for the number of teams.
          */
@@ -73333,7 +73125,6 @@ module.exports = {
             return !!this.activePlan.attributes.teams;
         },
 
-
         /**
          *
          * Get the remaining teams in the active plan.
@@ -73343,7 +73134,6 @@ module.exports = {
 
             return this.activePlan ? this.activePlan.attributes.teams - ownedTeams.length : 0;
         },
-
 
         /**
          * Check if the user can create more teams.
@@ -73363,7 +73153,6 @@ module.exports = {
     created: function created() {
         this.getPlans();
     },
-
 
     watch: {
         /**
@@ -73391,7 +73180,6 @@ module.exports = {
                 Bus.$emit('updateTeams');
             });
         },
-
 
         /**
          * Get all the plans defined in the application.
@@ -73427,14 +73215,12 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
     mounted: function mounted() {
         $('[data-toggle="tooltip"]').tooltip();
     },
-
 
     computed: {
         /**
@@ -73455,7 +73241,6 @@ module.exports = {
             $('#modal-leave-team').modal('show');
         },
 
-
         /**
          * Leave the given team.
          */
@@ -73468,7 +73253,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Approve the deletion of the given team.
          */
@@ -73477,7 +73261,6 @@ module.exports = {
 
             $('#modal-delete-team').modal('show');
         },
-
 
         /**
          * Delete the given team.
@@ -73530,14 +73313,12 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
     created: function created() {
         this.getPendingInvitations();
     },
-
 
     methods: {
         /**
@@ -73550,7 +73331,6 @@ module.exports = {
                 _this.invitations = response.data;
             });
         },
-
 
         /**
          * Accept the given invitation.
@@ -73567,7 +73347,6 @@ module.exports = {
             this.removeInvitation(invitation);
         },
 
-
         /**
          * Reject the given invitation.
          */
@@ -73580,7 +73359,6 @@ module.exports = {
 
             this.removeInvitation(invitation);
         },
-
 
         /**
          * Remove the given invitation from the list.
@@ -73617,7 +73395,6 @@ module.exports = {
         };
     },
 
-
     computed: {
         /**
          * Get the active subscription instance.
@@ -73636,7 +73413,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Get the active plan instance.
          */
@@ -73650,7 +73426,6 @@ module.exports = {
             }
         },
 
-
         /**
          * Check if there's a limit for the number of team members.
          */
@@ -73662,7 +73437,6 @@ module.exports = {
             return !!this.activePlan.attributes.teamMembers;
         },
 
-
         /**
          *
          * Get the remaining team members in the active plan.
@@ -73670,7 +73444,6 @@ module.exports = {
         remainingTeamMembers: function remainingTeamMembers() {
             return this.activePlan ? this.activePlan.attributes.teamMembers - this.$parent.team.users.length : 0;
         },
-
 
         /**
          * Check if the user can invite more team members.
@@ -73693,7 +73466,6 @@ module.exports = {
         this.getRoles();
     },
 
-
     methods: {
         /**
          * Send a team invitation.
@@ -73709,7 +73481,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get all the plans defined in the application.
          */
@@ -73720,7 +73491,6 @@ module.exports = {
                 _this3.plans = response.data;
             });
         },
-
 
         /**
          * Get the available member roles.
@@ -73761,14 +73531,12 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
     created: function created() {
         this.getRoles();
     },
-
 
     computed: {
         /**
@@ -73798,7 +73566,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Edit the given team member.
          */
@@ -73808,7 +73575,6 @@ module.exports = {
 
             $('#modal-update-team-member').modal('show');
         },
-
 
         /**
          * Update the team member.
@@ -73821,7 +73587,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Display the approval modal for the deletion of a team member.
          */
@@ -73830,7 +73595,6 @@ module.exports = {
 
             $('#modal-delete-member').modal('show');
         },
-
 
         /**
          * Delete the given team member.
@@ -73843,7 +73607,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Determine if the current user can edit a team member.
          */
@@ -73851,14 +73614,12 @@ module.exports = {
             return this.user.id === this.team.owner_id && this.user.id !== member.id;
         },
 
-
         /**
          * Determine if the current user can delete a team member.
          */
         canDeleteTeamMember: function canDeleteTeamMember(member) {
             return this.user.id === this.team.owner_id && this.user.id !== member.id;
         },
-
 
         /**
          * Get the displayable role for the given team member.
@@ -73900,7 +73661,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -73913,7 +73673,6 @@ module.exports = {
             self.getInvitations();
         });
     },
-
 
     methods: {
         /**
@@ -73961,7 +73720,6 @@ module.exports = {
         };
     },
 
-
     /**
      * The component has been created by Vue.
      */
@@ -73975,14 +73733,12 @@ module.exports = {
         });
     },
 
-
     /**
      * Prepare the component.
      */
     mounted: function mounted() {
         this.usePushStateForTabs('.spark-settings-tabs');
     },
-
 
     methods: {
         /**
@@ -74017,14 +73773,12 @@ module.exports = {
         };
     },
 
-
     /**
      * Prepare the component.
      */
     mounted: function mounted() {
         this.form.name = this.team.name;
     },
-
 
     methods: {
         /**
@@ -74056,7 +73810,6 @@ module.exports = {
         };
     },
 
-
     methods: {
         /**
          * Update the team's photo.
@@ -74085,7 +73838,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Gather the form data for the photo upload.
          */
@@ -74105,7 +73857,6 @@ module.exports = {
         urlForUpdate: function urlForUpdate() {
             return '/settings/' + Spark.teamsPrefix + '/' + this.team.id + '/photo';
         },
-
 
         /**
          * Calculate the style attribute for the photo preview.
@@ -74290,14 +74041,12 @@ module.exports = {
         });
     },
 
-
     /**
      * Prepare the application.
      */
     mounted: function mounted() {
         this.whenReady();
     },
-
 
     methods: {
         /**
@@ -74307,14 +74056,12 @@ module.exports = {
             //
         },
 
-
         /**
          * Load the data for an authenticated user.
          */
         loadDataForAuthenticatedUser: function loadDataForAuthenticatedUser() {
             this.getNotifications();
         },
-
 
         /**
          * Refresh the current API token every few minutes.
@@ -74335,7 +74082,6 @@ module.exports = {
             }, 5000);
         },
 
-
         /**
          * Refresh the current API token.
          */
@@ -74344,7 +74090,6 @@ module.exports = {
 
             axios.put('/spark/token');
         },
-
 
         /*
          * Get the current user of the application.
@@ -74357,7 +74102,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Get the current team list.
          */
@@ -74368,7 +74112,6 @@ module.exports = {
                 _this3.teams = response.data;
             });
         },
-
 
         /**
          * Get the current team.
@@ -74382,7 +74125,6 @@ module.exports = {
                 //
             });
         },
-
 
         /**
          * Get the application notifications.
@@ -74398,7 +74140,6 @@ module.exports = {
                 _this5.loadingNotifications = false;
             });
         },
-
 
         /**
          * Mark the current notifications as read.
@@ -74417,7 +74158,6 @@ module.exports = {
             });
         },
 
-
         /**
          * Send a customer support request.
          */
@@ -74433,7 +74173,6 @@ module.exports = {
                 _this6.supportForm.message = '';
             });
         },
-
 
         /**
          * Show an alert informing the user their support request was sent.
@@ -74469,7 +74208,6 @@ module.exports = {
             return 0;
         },
 
-
         /**
          * The number of unread notifications.
          */
@@ -74483,14 +74221,12 @@ module.exports = {
             return 0;
         },
 
-
         /**
          * Determine if the user has any unread notifications.
          */
         hasUnreadAnnouncements: function hasUnreadAnnouncements() {
             return this.unreadAnnouncementsCount > 0;
         },
-
 
         /**
          * Determine if the user has any unread notifications.
