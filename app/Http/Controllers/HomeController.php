@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Aws\S3\S3Client;
-use Aws\Common\Credentials\Credentials;
 
 class HomeController extends Controller
 {
@@ -27,13 +25,6 @@ class HomeController extends Controller
      */
     public function show()
     {
-        $access_key = 'blargon';
-        $access_secret = 'secret_blargon';
-        $credentials = new Credentials($access_key, $access_secret);
-        $s3Client = S3Client::factory(array(
-            'credentials' => $credentials
-        ));
-
         return view('home');
     }
 }

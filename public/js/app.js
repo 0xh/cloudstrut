@@ -69075,13 +69075,6 @@ Vue.component('spark-update-team-photo', {
 
 /***/ }),
 
-/***/ "./resources/sass/design.scss":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./spark/resources/assets/js/auth/register-braintree.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -74280,7 +74273,6 @@ __webpack_require__("./spark/resources/assets/js/forms/bootstrap.js");
 
 __webpack_require__("./resources/js/app.js");
 __webpack_require__("./resources/sass/app.scss");
-__webpack_require__("./resources/sass/design.scss");
 module.exports = __webpack_require__("./resources/sass/app-rtl.scss");
 
 
